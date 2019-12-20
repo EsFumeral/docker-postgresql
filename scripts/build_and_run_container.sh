@@ -20,6 +20,7 @@ echo TABLESPACE_PATH $TABLESPACE_PATH
 echo PGTABLESPACES $PGTABLESPACES
 echo GIT_URL $GIT_URL
 echo FOLDER_NAME $FOLDER_NAME
+echo VERSION $VERSION
 
 # Don't optimize with $DATA_PATH
 # Could be empty and all data will be lost
