@@ -38,7 +38,7 @@ echo Cloning from git
 cd $HOME/.docker-utils/$FOLDER_NAME/$VERSION
 
 echo Building images at `pwd`
-sudo docker build -t "postgres:$LONG_APP_NAME" .
+sudo docker build -t "postgres:$LONG_APP_NAME" --file ./$VERSION/Dockerfile .
 
 echo Scripts folder `pwd`
 sudo chmod +x *

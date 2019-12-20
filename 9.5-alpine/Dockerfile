@@ -32,9 +32,9 @@ ENV  PGTABLESPACES $PGDATA/tablespaces
 # Copy files needed during database creation
 # -------------
 
-COPY ../docker-entrypoint-initdb.d/00_initdb.sh /docker-entrypoint-initdb.d/
-COPY ../docker-entrypoint-initdb.d/scripts/ /docker-entrypoint-initdb.d/scripts/
-COPY ../docker-entrypoint-initdb.d/sql/ /docker-entrypoint-initdb.d/sql/
+COPY ./docker-entrypoint-initdb.d/00_initdb.sh /docker-entrypoint-initdb.d/
+COPY ./docker-entrypoint-initdb.d/scripts/ /docker-entrypoint-initdb.d/scripts/
+COPY ./docker-entrypoint-initdb.d/sql/ /docker-entrypoint-initdb.d/sql/
 
 # Define default entrypoint 
 
