@@ -48,4 +48,4 @@ echo Creating $DATA_PATH folder
 sudo mkdir -p $DATA_PATH
 ls -l $DATA_PATH/..
 sudo docker stop pg-docker-$LONG_APP_NAME
-../scripts/run-container.sh
+./scripts/run-container.sh
