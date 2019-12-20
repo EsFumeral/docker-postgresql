@@ -24,8 +24,7 @@ echo FOLDER_NAME $FOLDER_NAME
 # Don't optimize with $DATA_PATH
 # Could be empty and all data will be lost
 sudo rm -r /app/docker/postgresql/$LONG_APP_NAME
-
-mkdir -p $HOME/.docker-utils/$FOLDER_NAME
+mkdir -p $HOME/.docker-utils
 cd $HOME/.docker-utils
 echo Current dir should be $HOME/.docker-utils
 echo Current dir is `pwd`
