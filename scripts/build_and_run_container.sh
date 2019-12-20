@@ -41,8 +41,8 @@ cd $HOME/.docker-utils/$FOLDER_NAME
 echo Building images at `pwd`
 sudo docker build -t "postgres:$LONG_APP_NAME" --file ./$VERSION/Dockerfile .
 
-echo Scripts folder `pwd`
-sudo chmod +x *
+echo Scripts folder `pwd`/scripts
+sudo chmod +x ./scripts/*
 
 echo Creating $DATA_PATH folder
 sudo mkdir -p $DATA_PATH
