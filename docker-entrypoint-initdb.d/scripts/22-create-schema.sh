@@ -4,8 +4,8 @@ set -e
 
 psql \
     -v ON_ERROR_STOP=1 \
-    --u $POSTGRES_USER \
-    --d $POSTGRES_DB \
+    -u $POSTGRES_USER \
+    -d $POSTGRES_DB \
     -f /docker-entrypoint-initdb.d/sql/create_schema.sql \
     --echo-all \
     --set AUTOCOMMIT=off \
