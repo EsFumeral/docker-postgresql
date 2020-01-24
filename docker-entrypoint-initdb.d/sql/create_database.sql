@@ -4,7 +4,7 @@ WITH OWNER = postgres
         ENCODING = 'UTF8'
         TABLESPACE = pg_default
         LC_COLLATE = \':LC_NAME\'
-        LC_CTYPE = :\'LC_NAME\'
+        LC_CTYPE = \':LC_NAME\'
         CONNECTION LIMIT = -1;
 
 ALTER DATABASE :APP_DATABASE_NAME
