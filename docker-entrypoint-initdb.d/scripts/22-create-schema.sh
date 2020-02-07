@@ -4,17 +4,16 @@ set -e
 
 psql \
     -v ON_ERROR_STOP=1 \
-    -u $POSTGRES_USER \
-    -d $POSTGRES_DB \
+    --username $POSTGRES_USER \
+    --dbname $POSTGRES_DB \
     -f /docker-entrypoint-initdb.d/sql/create_schema.sql \
     --echo-all \
-    --set AUTOCOMMIT=off \
-    --set ON_ERROR_STOP=on \
-    --set APP_DATABASE_NAME=$APP_DATABASE_NAME \
-    --set APP_USER_NAME=$APP_USER_NAME \
-    --set APP_WWW_USER_NAME=$APP_WWW_USER_NAME \
-    --set APP_TABLESPACES=$APP_TABLESPACES \
-    --set LC_NAME=$LC_NAME
+    -v AUTOCOMMIT=off \
+    -v APP_DATABASE_NAME=$APP_DATABASE_NAME \
+    -v APP_USER_NAME=$APP_USER_NAME \
+    -v APP_WWW_USER_NAME=$APP_WWW_USER_NAME \
+    -v APP_TABLESPACES=$APP_TABLESPACES \
+    -v LC_NAME=$LC_NAME
     
 psql_exit_status = $?
 
