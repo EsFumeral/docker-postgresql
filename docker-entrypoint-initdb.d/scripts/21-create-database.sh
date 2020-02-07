@@ -2,19 +2,6 @@
 
 set -e
 
-echo psql \
-    -v ON_ERROR_STOP=1 \
-    --username $POSTGRES_USER \
-    --dbname $POSTGRES_DB \
-    -f /docker-entrypoint-initdb.d/sql/create_database.sql \
-    --echo-all \
-    -v AUTOCOMMIT=off \
-    -v APP_DATABASE_NAME=$APP_DATABASE_NAME \
-    -v APP_USER_NAME=$APP_USER_NAME \
-    -v APP_WWW_USER_NAME=$APP_WWW_USER_NAME \
-    -v APP_TABLESPACES=$APP_TABLESPACES \
-    -v LC_NAME=$LC_NAME > $PGDATA/traza.txt
-
 psql \
     -v ON_ERROR_STOP=1 \
     -u $POSTGRES_USER \
@@ -25,8 +12,10 @@ psql \
     -v APP_DATABASE_NAME=$APP_DATABASE_NAME \
     -v APP_USER_NAME=$APP_USER_NAME \
     -v APP_WWW_USER_NAME=$APP_WWW_USER_NAME \
-    -v APP_TABLESPACES=$APP_TABLESPACES \
-    -v LC_NAME=$LC_NAME
+    -v APP_TABLESPACES_QUOTED='$APP_TABLESPACES' \
+    -v LC_NAME_QUOTED='$LC_NAME' \
+    -v APP_USER_NAME_QUOTED='$APP_USER_NAME' \
+    -v APP_WWW_USER_NAME_QUOTED='$APP_WWW_USER_NAME'
     
 psql_exit_status = $?
 
