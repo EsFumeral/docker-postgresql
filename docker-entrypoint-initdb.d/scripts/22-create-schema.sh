@@ -4,8 +4,8 @@ set -e
 
 psql \
     -v ON_ERROR_STOP=1 \
-    --username $POSTGRES_USER \
-    --dbname $POSTGRES_DB \
+    -u $POSTGRES_USER \
+    --d $POSTGRES_DB \
     -f /docker-entrypoint-initdb.d/sql/create_schema.sql \
     --echo-all \
     -v AUTOCOMMIT=off \
@@ -13,15 +13,15 @@ psql \
     -v APP_USER_NAME=$APP_USER_NAME \
     -v APP_WWW_USER_NAME=$APP_WWW_USER_NAME
     
-psql_exit_status = $?
+#psql_exit_status = $?
 
-if [ $psql_exit_status != 0 ]; then
-    echo "psql failed while trying to run this sql script" 1>&2
-    exit $psql_exit_status
-fi
+#if [ $psql_exit_status != 0 ]; then
+#    echo "psql failed while trying to run this sql script" 1>&2
+#    exit $psql_exit_status
+#fi
 
-echo "sql script successful"
-exit 0
+#echo "sql script successful"
+#exit 0
 
 
 

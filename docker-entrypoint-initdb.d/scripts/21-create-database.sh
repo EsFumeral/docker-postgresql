@@ -11,19 +11,19 @@ psql \
     -v AUTOCOMMIT=off \
     -v APP_DATABASE_NAME=$APP_DATABASE_NAME \
     -v APP_USER_NAME=$APP_USER_NAME \
-    -v APP_WWW_USER_NAME=$APP_WWW_USER_NAME \
-    -v APP_TABLESPACES=$APP_TABLESPACES \
-    -v LC_NAME=$LC_NAME
+    -v QAPP_WWW_USER_NAME=\'$APP_WWW_USER_NAME\' \
+    -v QAPP_TABLESPACES=\'$APP_TABLESPACES\' \
+    -v QLC_NAME=\'$LC_NAME\'
     
-psql_exit_status = $?
+#psql_exit_status = $?
 
-if [ $psql_exit_status != 0 ]; then
-    echo "psql failed while trying to run this sql script" 1>&2
-    exit $psql_exit_status
-fi
+#if [ $psql_exit_status != 0 ]; then
+#    echo "psql failed while trying to run this sql script" 1>&2
+#    exit $psql_exit_status
+#fi
 
-echo "sql script successful"
-exit 0
+#echo "sql script successful"
+#exit 0
 
 
 
