@@ -7,8 +7,8 @@ WITH OWNER = postgres
         LC_CTYPE = 'en_US.utf8'
         CONNECTION LIMIT = -1;
 
-ALTER DATABASE :APP_DATABASE_NAME
-    SET client_encoding ='UTF8';
+ALTER DATABASE DUMMY
+ SET client_encoding ='UTF8';
 
 CREATE ROLE DUMMY LOGIN
     ENCRYPTED PASSWORD 'DUMMY'
