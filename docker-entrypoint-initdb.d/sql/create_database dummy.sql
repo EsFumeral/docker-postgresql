@@ -1,4 +1,4 @@
-
+/*
 CREATE DATABASE DUMMY
     WITH OWNER = postgres
     ENCODING = 'UTF8'
@@ -7,7 +7,7 @@ CREATE DATABASE DUMMY
     LC_CTYPE = 'en_US.utf8'
     CONNECTION LIMIT = -1;
 
-/*
+
 ALTER DATABASE DUMMY
  SET client_encoding ='UTF8';
 
