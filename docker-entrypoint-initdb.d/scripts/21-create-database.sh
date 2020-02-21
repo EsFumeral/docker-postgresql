@@ -7,7 +7,7 @@ psql \
     --dbname "$POSTGRES_DB" \
     --file /docker-entrypoint-initdb.d/sql/create_database_dummy.sql \
     --echo-all \
-    --set AUTOCOMMIT=off --set ON_ERROR_STOP=on
+    --set AUTOCOMMIT=off ON_ERROR_STOP=on
     #\
     #-v APP_DATABASE_NAME="$APP_DATABASE_NAME" \
     #-v APP_USER_NAME="$APP_USER_NAME" \
