@@ -7,7 +7,7 @@ CREATE DATABASE DUMMY
     LC_CTYPE = 'en_US.utf8'
     CONNECTION LIMIT = -1;
 
-/*
+
 ALTER DATABASE DUMMY
  SET client_encoding ='UTF8';
 
@@ -26,4 +26,3 @@ LOCATION '/var/lib/postgresql/data/tablespaces';
 ALTER ROLE DUMMY SET default_tablespace TO DUMMY;
 
 ALTER DATABASE DUMMY OWNER to DUMMY;
-*/
