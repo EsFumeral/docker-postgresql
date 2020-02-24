@@ -1,5 +1,4 @@
 #!/bin/bash
-
 export APP_DATABASE_NAME=$LONG_APP_NAME
 export APP_USER_NAME=$LONG_APP_NAME
 export APP_WWW_USER_NAME=www_$LONG_APP_NAME

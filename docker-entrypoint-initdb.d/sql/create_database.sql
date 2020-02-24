@@ -1,11 +1,12 @@
 
 CREATE DATABASE :APP_DATABASE_NAME
-WITH OWNER = postgres
-        ENCODING = 'UTF8'
-        TABLESPACE = pg_default
-        LC_COLLATE = :QLC_NAME
-        LC_CTYPE = :QLC_NAME
-        CONNECTION LIMIT = -1;
+WITH 
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    TABLESPACE = pg_default
+    LC_COLLATE = :QLC_NAME
+    LC_CTYPE = :QLC_NAME
+    CONNECTION LIMIT = -1;
 
 ALTER DATABASE :APP_DATABASE_NAME
     SET client_encoding ='UTF8';
