@@ -3,15 +3,15 @@
 set -e
 
 psql \
-    --username "$POSTGRES_USER" \
-    --dbname "$POSTGRES_DB" \
+    --username $POSTGRES_USER \
+    --dbname $POSTGRES_DB \
     --file /docker-entrypoint-initdb.d/sql/create_schema.sql \
     --echo-all \
     --set AUTOCOMMIT=off \
         ON_ERROR_STOP=on \
-        APP_DATABASE_NAME="$APP_DATABASE_NAME" \
-        APP_USER_NAME="$APP_USER_NAME" \
-        APP_WWW_USER_NAME="$APP_WWW_USER_NAME"
+        APP_DATABASE_NAME=$APP_DATABASE_NAME \
+        APP_USER_NAME=$APP_USER_NAME \
+        APP_WWW_USER_NAME=$APP_WWW_USER_NAME
     
 #psql_exit_status = $?
 
