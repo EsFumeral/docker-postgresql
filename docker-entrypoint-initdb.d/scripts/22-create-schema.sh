@@ -1,17 +1,17 @@
 #!/bin/bash
 
-set -e
+# set -e
 
-psql \
-    --username $POSTGRES_USER \
-    --dbname $POSTGRES_DB \
-    --file /docker-entrypoint-initdb.d/sql/create_schema.sql \
-    --echo-all \
-    --set AUTOCOMMIT=off \
-        ON_ERROR_STOP=on \
-        APP_DATABASE_NAME=$APP_DATABASE_NAME \
-        APP_USER_NAME=$APP_USER_NAME \
-        APP_WWW_USER_NAME=$APP_WWW_USER_NAME
+# psql \
+#     --username $POSTGRES_USER \
+#     --dbname $POSTGRES_DB \
+#     --file /docker-entrypoint-initdb.d/sql/create_schema.sql \
+#     --echo-all \
+#     --set AUTOCOMMIT=off \
+#         ON_ERROR_STOP=on \
+#         APP_DATABASE_NAME=$APP_DATABASE_NAME \
+#         APP_USER_NAME=$APP_USER_NAME \
+#         APP_WWW_USER_NAME=$APP_WWW_USER_NAME
     
 #psql_exit_status = $?
 
@@ -25,14 +25,14 @@ psql \
 
 
 
-# set -e
+set -e
 
-# psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$LONG_APP_NAME" <<-EOSQL
+psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$LONG_APP_NAME" <<-EOSQL
     
-#     CREATE SCHEMA $APP_DATABASE_NAME AUTHORIZATION $APP_USER_NAME;
+    CREATE SCHEMA $APP_DATABASE_NAME AUTHORIZATION $APP_USER_NAME;
 
-#     GRANT USAGE ON SCHEMA $APP_DATABASE_NAME to $APP_WWW_USER_NAME;
+    GRANT USAGE ON SCHEMA $APP_DATABASE_NAME to $APP_WWW_USER_NAME;
     
-#     ALTER ROLE $APP_WWW_USER_NAME SET search_path=$APP_DATABASE_NAME;
+    ALTER ROLE $APP_WWW_USER_NAME SET search_path=$APP_DATABASE_NAME;
 
-# EOSQL
+EOSQL
