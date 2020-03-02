@@ -2,8 +2,11 @@
 
 export CODAPP=codapp
 export APP=app
-export PASSAPP=codapp
-export PORTAPP=5436
+export PASS=codapp
+export PORT=5432
+
+
+
 
 export LONG_APP_NAME=$CODAPP
 export SHORT_APP_NAME=$APP
