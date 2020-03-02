@@ -1,9 +1,13 @@
 #!/bin/bash
 
-export LONG_APP_NAME=portafib
-export SHORT_APP_NAME=pfi
+export CODAPP=codapp
+export APP=app
+export PASSAPP=codapp
+
+export LONG_APP_NAME=$CODAPP
+export SHORT_APP_NAME=$APP
 export DB_PORT=5435
-export PG_PASSWORD=portafib
+export PG_PASSWORD=$PASSAPP
 export DATA_PATH=/app/docker/postgresql/$LONG_APP_NAME/data
 export TABLESPACE_PATH=$DATA_PATH/tablespaces
 export PGTABLESPACES=/var/lib/postgresql/data/tablespaces
