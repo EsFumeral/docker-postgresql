@@ -3,10 +3,11 @@
 export CODAPP=codapp
 export APP=app
 export PASSAPP=codapp
+export PORTAPP=5436
 
 export LONG_APP_NAME=$CODAPP
 export SHORT_APP_NAME=$APP
-export DB_PORT=5435
+export DB_PORT=$PORTAPP
 export PG_PASSWORD=$PASSAPP
 export DATA_PATH=/app/docker/postgresql/$LONG_APP_NAME/data
 export TABLESPACE_PATH=$DATA_PATH/tablespaces
