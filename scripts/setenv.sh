@@ -5,9 +5,6 @@ export APP=app
 export PASS=codapp
 export PORT=5432
 
-
-
-
 export LONG_APP_NAME=$CODAPP
 export SHORT_APP_NAME=$APP
 export DB_PORT=$PORTAPP
