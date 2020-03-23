@@ -1,5 +1,9 @@
 #!/bin/bash
 
+echo ""
+echo setenv.sh started
+echo ""
+
 export CODAPP=codapp
 export APP=app
 export BDPASSAPP=codapp

@@ -1,12 +1,12 @@
 #!/bin/bash
 
 # This script stops the container
-# and creates a new one
+# and builds a new one from Dockerfile
 # Database should persist
 #
 
 echo ""
-echo reboot-container.sh started
+echo persistent_build_and_run.sh started
 echo ""
 
 source ./setenv.sh
@@ -20,31 +20,30 @@ echo TABLESPACE_PATH $TABLESPACE_PATH
 echo PGTABLESPACES $PGTABLESPACES
 echo GIT_URL $GIT_URL
 echo FOLDER_NAME $FOLDER_NAME
+echo VERSION $VERSION
 
+#
+#
+#
+#
 
-
-
-mkdir -p $HOME/.docker-utils
-cd $HOME/.docker-utils
-echo Current dir should be $HOME/.docker-utils
-echo Current dir is `pwd`
-echo `pwd` contains
+CURDIR=`pwd`
+echo Current dir CURDIR is $CURDIR
+echo Folder CURDIR $CURDIR contains
 ls -l
-echo Removing postgresql-utils from `pwd`
-sudo rm -r $HOME/.docker-utils/$FOLDER_NAME
-ls -l
-git clone $GIT_URL
-echo Cloning from git
-cd $HOME/.docker-utils/$FOLDER_NAME/$VERSION
 
+echo Changing directory to $CURDIR/..
+cd $CURDIR/..
 echo Building images at `pwd`
+echo content `ls .`
+echo Dockerfile path ./$VERSION/Dockerfile
 sudo docker build -t "postgres:$LONG_APP_NAME" --file ./$VERSION/Dockerfile .
 
 echo Scripts folder `pwd`/scripts
-sudo chmod +x ./scripts/*
+# sudo chmod +x ./scripts/*
 
-
-
-
+#
+#
+#
 sudo docker stop pg-docker-$LONG_APP_NAME
 ./scripts/run-container.sh
