@@ -7,7 +7,7 @@ echo ""
 export CODAPP=codapp
 export APP=app
 export BDPASSAPP=codapp
-export BDPORTAPP=5435
+export BDPORTAPP=5432
 
 export LONG_APP_NAME=$CODAPP
 export SHORT_APP_NAME=$APP

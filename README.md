@@ -4,85 +4,137 @@ Docker utilities for PostgreSQL
 
 ## Getting Started
 
-
-
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+* Ubuntu, Debian or CentOS operating system
+* A user account with sudo privileges
+* Command-line/terminal (CTRL-ALT-T or Applications menu > Accessories > Terminal)
+* Docker software repositories (optional)
 
-```
-Give examples
-```
+The specific steps to installing Docker will differ depending on the host's operating system. Full instructions can be found on [Docker's installation documentation](https://docs.docker.com/install/overview/)
+
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
+Clone this repository on your local machine
 
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
+```bash
+git clone https://github.com/gdeignacio/docker-postgresql.git
 ```
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+1. Clone this repository on your local machine
 
-<!--
-## Built With
+    ```bash
+    git clone https://github.com/gdeignacio/docker-postgresql.git
+    cd docker-postgresql
+    ```
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
--->
+2. Run [install.sh](./scripts/install.sh) script
 
-<!--
-## Contributing
+    ```bash
+    cd scripts
+    ./install.sh
+    ```
+    or
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
--->
+    ```bash
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get remove docker docker-engine docker.io docker-compose
+    sudo apt-get autoremove
+    sudo apt-get install docker.io docker-compose
+    sudo systemctl enable docker
+    sudo systemctl start docker
+    sudo systemctl status docker
+    sudo useradd -p $(openssl passwd -1 docker) docker -g docker
+    sudo mkdir -p /app/docker
+    ```
 
-## Versioning
+3. Edit [setenv.sh](./scripts/setenv.sh) file
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/gdeignacio/docker-postgresql/tags). 
+    * Set CODAPP by replacing *codapp* with your actual codapp long code
+    * Set APP by replacing *app* with your actual app short code
+    * Set BDPASSAPP by replacing *codapp* with a password of your choice
+    * Set BDPORTAPP by replacing 5432 with another port if needed
+    * Set VERSION to any available version from this repo
+
+    ```bash
+    export CODAPP=codapp
+    export APP=app
+    export BDPASSAPP=codapp
+    export BDPORTAPP=5432
+
+    export LONG_APP_NAME=$CODAPP
+    export SHORT_APP_NAME=$APP
+    export DB_PORT=$BDPORTAPP
+    export PG_PASSWORD=$BDPASSAPP
+    export DATA_PATH=/app/docker/postgresql/$LONG_APP_NAME/data
+    export TABLESPACE_PATH=$DATA_PATH/tablespaces
+    export PGTABLESPACES=/var/lib/postgresql/data/tablespaces
+    export GIT_URL=https://github.com/gdeignacio/docker-postgresql.git
+    export FOLDER_NAME=docker-postgresql
+    export VERSION=9.5-alpine
+    ```
+
+4. Run your containerized database.
+
+    Run ./fresh_build_and_run.sh to set a brand new database. This will be erase all previous existing data.
+
+    ```bash
+    ./fresh_build_and_run.sh
+    ```
+    or
+    
+    Run ./persistent_build_and_run.sh to set brand new container without erase existing data.
+
+    ```bash
+    ./persistent_build_and_run.sh
+    ```
+    or
+    
+    Run ./persistent_run.sh to launch container from existing built image
+
+    ```bash
+    ./persistent_run.sh
+    ```
+    
+    All executions remove containers when finished.
+
+
+## Also
+
+* Stop your container
+
+    ```bash
+    sudo docker stop pg-docker-codapp
+    ```
+
+* List built images
+
+    ```bash
+    sudo docker image ls
+    ```
+
+* Delete existing images
+
+    ```bash
+    sudo docker image prune -a
+    ```
+
+* See [Docker reference](https://docs.docker.com/reference/) for more options
+
+
+
+
+
 
 ## Authors
 
 * **gdeignacio** - *Initial work* - [gdeignacio](https://github.com/gdeignacio)
-
-<!--
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
--->
 
 ## License
 
@@ -90,7 +142,6 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* https://github.com/docker-library/postgres
+
 
