@@ -82,7 +82,7 @@ git clone https://github.com/gdeignacio/docker-postgresql.git
 
 4. Run your containerized database.
 
-    Run ./fresh_build_and_run.sh to set a brand new database. This will be erase all previous existing data.
+    Run ./fresh_build_and_run.sh to set a brand new database. All previous existing data will be erased.
 
     ```bash
     ./fresh_build_and_run.sh
