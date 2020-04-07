@@ -52,7 +52,12 @@ if [[ remaining -eq 0 ]]; then
     echo Setting BDPASSAPP to $LOAD_BDPASSAPP
     BDPASSAPP=$LOAD_BDPASSAPP
 else
-    echo Loading default values
+    if [[ remaining -eq 4 ]]; then
+        echo Loading default values
+    else
+        echo Wrong number of parameters $remaining more expected
+        exit 1
+    fi
 fi
 
 export CODAPP
