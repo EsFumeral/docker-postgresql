@@ -79,14 +79,30 @@ git clone https://github.com/gdeignacio/docker-postgresql.git
     export FOLDER_NAME=docker-postgresql
     export VERSION=9.5-alpine
     ```
+    or
+
+    Add arguments to command line
+
+    ```bash
+    ./script.sh -codapp=codapp -app=app -pass=codapp -p=5432
+    ./script.sh --codapp=codapp --app=app --password=codapp --port=5432
+    ```
 
 4. Run your containerized database.
 
     Run ./fresh_build_and_run.sh to set a brand new database. All previous existing data will be erased.
 
+    Without parameters:
+
     ```bash
     ./fresh_build_and_run.sh
     ```
+    with parameters:
+
+    ```bash
+    ./fresh_build_and_run.sh -codapp=codapp -app=app -pass=codapp -p=5432
+    ```
+
     or
     
     Run ./persistent_build_and_run.sh to set brand new container without erase existing data.
@@ -134,7 +150,7 @@ git clone https://github.com/gdeignacio/docker-postgresql.git
 
 ## Authors
 
-* **gdeignacio** - *Initial work* - [gdeignacio](https://github.com/gdeignacio)
+* **gdeignacio**  - [gdeignacio](https://github.com/gdeignacio)
 
 ## License
 

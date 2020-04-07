@@ -4,10 +4,67 @@ echo ""
 echo setenv.sh started
 echo ""
 
-export CODAPP=codapp
-export APP=app
-export BDPASSAPP=app
-export BDPORTAPP=5432
+CODAPP=codapp
+APP=app
+BDPASSAPP=codapp
+BDPORTAPP=5432
+
+remaining=4
+
+for i in "$@"
+do
+case $i in
+    -codapp=*|--codapp=*)
+    LOAD_CODAPP="${i#*=}"
+    let "remaining--"
+    shift # past argument=value
+    ;;
+    -app=*|--app=*)
+    LOAD_APP="${i#*=}"
+    let "remaining--"
+    shift # past argument=value
+    ;;
+    -pass=*|--password=*)
+    LOAD_BDPASSAPP="${i#*=}"
+    let "remaining--"
+    shift # past argument=value
+    ;;
+    -p=*|--port=*)
+    LOAD_BDPORTAPP="${i#*=}"
+    let "remaining--"
+    shift # past argument=value
+    ;;
+    *)
+          # unknown option
+    ;;
+esac
+done
+
+if [[ remaining -eq 0 ]]; then
+    export LOAD_PARAM=true
+    echo Load params $LOAD_PARAM
+    echo Setting CODAPP to $LOAD_CODAPP
+    CODAPP=$LOAD_CODAPP
+    echo Setting APP to $LOAD_CODAPP
+    APP=$LOAD_APP
+    echo Setting BDPORTAPP to $LOAD_BDPORTAPP
+    BDPORTAPP=$LOAD_BDPORTAPP
+    echo Setting BDPASSAPP to $LOAD_BDPASSAPP
+    BDPASSAPP=$LOAD_BDPASSAPP
+else
+    if [[ remaining -eq 4 ]]; then
+        echo Loading default values
+    else
+        echo Wrong number of parameters $remaining more expected
+        exit 1
+    fi
+fi
+
+export CODAPP
+export APP
+export BDPASSAPP
+export BDPORTAPP
+
 
 export LONG_APP_NAME=$CODAPP
 export SHORT_APP_NAME=$APP
