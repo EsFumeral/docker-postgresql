@@ -9,7 +9,7 @@ echo ""
 echo persistent_run.sh started
 echo ""
 
-source ./setenv.sh
+source ./setenv.sh $@
 
 echo LONG_APP_NAME $LONG_APP_NAME
 echo SHORT_APP_NAME $SHORT_APP_NAME
